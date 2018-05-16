@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
+	<link rel="shortcut icon" href="icon.ico">
 </head>
 
 <body id="body">
@@ -16,6 +16,7 @@
 		<h2>Resta 1</h2>
 		<h4>Eduardo Kling e Flávio Ferreira</h4>
 	</div>
+
 
 	<div class="content">
 		<div class="tabuleiro">
@@ -28,86 +29,93 @@
 				<div>5</div>
 				<div>6</div>
 			</div>
-			<div id="r0">
+			<div class="r">
 				<div class="line_number">0</div>
-				<div class="c0"></div>
-				<div class="c1"></div>
-				<div class="c2"></div>
-				<div class="c3"></div>
-				<div class="c4"></div>
-				<div class="c5"></div>
-				<div class="c6"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
 			</div>
-			<div id="r1">
+			<div class="r">
 				<div class="line_number">1</div>
-				<div class="c0"></div>
-				<div class="c1"></div>
-				<div class="c2"></div>
-				<div class="c3"></div>
-				<div class="c4"></div>
-				<div class="c5"></div>
-				<div class="c6"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
 			</div>
-			<div id="r2">
+			<div class="r">
 				<div class="line_number">2</div>
-				<div class="c0"></div>
-				<div class="c1"></div>
-				<div class="c2"></div>
-				<div class="c3"></div>
-				<div class="c4"></div>
-				<div class="c5"></div>
-				<div class="c6"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
 			</div>
-			<div id="r3">
+			<div class="r">
 				<div class="line_number">3</div>
-				<div class="c0"></div>
-				<div class="c1"></div>
-				<div class="c2"></div>
-				<div class="c3"></div>
-				<div class="c4"></div>
-				<div class="c5"></div>
-				<div class="c6"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
 			</div>
-			<div id="r4">
+			<div class="r">
 				<div class="line_number">4</div>
-				<div class="c0"></div>
-				<div class="c1"></div>
-				<div class="c2"></div>
-				<div class="c3"></div>
-				<div class="c4"></div>
-				<div class="c5"></div>
-				<div class="c6"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
 			</div>
-			<div id="r5">
+			<div class="r">
 				<div class="line_number">5</div>
-				<div class="c0"></div>
-				<div class="c1"></div>
-				<div class="c2"></div>
-				<div class="c3"></div>
-				<div class="c4"></div>
-				<div class="c5"></div>
-				<div class="c6"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
 			</div>
-			<div id="r6">
+			<div class="r">
 				<div class="line_number">6</div>
-				<div class="c0"></div>
-				<div class="c1"></div>
-				<div class="c2"></div>
-				<div class="c3"></div>
-				<div class="c4"></div>
-				<div class="c5"></div>
-				<div class="c6"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
+				<div class="c"></div>
 			</div>
 		</div>
+		
+		<div class="controls">
 
+			<input class="btn reiniciaBTN" id="reiniciaBTN" type="submit" value="Reiniciar" disabled>
+			<input class="btn outraJogadaBTN" id="outraJogadaBTN" type="submit" value="Continuar" disabled>
+			<input class="btn jogaBTN" id="jogaBTN" type="submit" value="Jogar">
 
-		<!--<div class="bolinhaPreta"></div>-->
-		<!--<div class="bolinhaBranca"></div>-->
+		</div>
+		
+		<div class="timeContainer">
+			<p id="time"></p>
+		</div>
 
-
-		<input id="jogaBTN" type="submit" value="Jogar">
-
-		<div class="resultados"></div>
+		<div class="resultados -hide">
+			<div class="listaResultado"></div>
+		</div>
 	</div>
 
 	<script src="default.js" type="text/javascript"></script>
