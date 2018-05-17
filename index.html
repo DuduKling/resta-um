@@ -13,12 +13,12 @@
 <body id="body">
 
 	<div class="titulo">
-		<h2>Resta 1</h2>
+		<h2>Resta 1 - Backtracking</h2>
 		<h4>Eduardo Kling e Flávio Ferreira</h4>
 	</div>
 
 
-	<div class="content">
+	<section class="content">
 		<div class="tabuleiro">
 			<div class="column_number">
 				<div>0</div>
@@ -33,9 +33,15 @@
 				<div class="line_number">0</div>
 				<div class="c"></div>
 				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
 				<div class="c"></div>
 				<div class="c"></div>
 			</div>
@@ -43,49 +49,103 @@
 				<div class="line_number">1</div>
 				<div class="c"></div>
 				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
 				<div class="c"></div>
 				<div class="c"></div>
 			</div>
 			<div class="r">
 				<div class="line_number">2</div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
 			</div>
 			<div class="r">
 				<div class="line_number">3</div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -branca'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
 			</div>
 			<div class="r">
 				<div class="line_number">4</div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
 			</div>
 			<div class="r">
 				<div class="line_number">5</div>
 				<div class="c"></div>
 				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
 				<div class="c"></div>
 				<div class="c"></div>
 			</div>
@@ -93,9 +153,15 @@
 				<div class="line_number">6</div>
 				<div class="c"></div>
 				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
-				<div class="c"></div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
+				<div class="c">
+					<div class='bolinha -preta'></div>
+				</div>
 				<div class="c"></div>
 				<div class="c"></div>
 			</div>
@@ -116,7 +182,12 @@
 		<div class="resultados -hide">
 			<div class="listaResultado"></div>
 		</div>
-	</div>
+	</section>
+	
+	<footer class="footer">
+		<p>Algoritmo implementado para a disciplina de Análise de Algoritmos.</p>
+		<p>2018</p>
+	</footer>
 
 	<script src="default.js" type="text/javascript"></script>
 </body>
