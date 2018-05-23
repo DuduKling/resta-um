@@ -32,11 +32,14 @@ var timeInit = 0;
 var timeEnd = 0;
 var timeAll = 0;
 
+var qtdIteracao = 0;
+var mostraConsole = 0;
+
 var posTabuleiroTela = document.querySelectorAll(".c");
 
 mostraTabuleiro();
 
-
+/* Criando funções para acontecerem ao clicar dos botões na tela. */
 document.getElementById("jogaBTN").addEventListener("click", function(){
 	totalJogadas = [];
 	posJogadas = [];
@@ -46,7 +49,6 @@ document.getElementById("jogaBTN").addEventListener("click", function(){
 	timeInit = new Date();
 	while (!compara()) {
 		calcula();
-
 	}
 	timeEnd = new Date();
 
@@ -75,9 +77,9 @@ document.getElementById("outraJogadaBTN").addEventListener("click", function(){
 	pos = -1;
 	jogadas = [];
 	qtdEncontradosIgual = 0;
+	qtdIteracao = 0;
 
 	CliquesContinua++;
-	//console.log("Cliques: "+CliquesContinua);
 
 	timeInit = new Date();
 	while(compara2()!=CliquesContinua) {
@@ -91,8 +93,6 @@ document.getElementById("outraJogadaBTN").addEventListener("click", function(){
 	limpaJogadasFeitasNaTela(someTudo);
 	mostraJogadasFeitasNaTela();
 });
-
-
 
 document.getElementById("reiniciaBTN").addEventListener("click", function() {
 	tabuleiro = [
@@ -115,6 +115,7 @@ document.getElementById("reiniciaBTN").addEventListener("click", function() {
 	timeInit = 0;
 	timeEnd = 0;
 	timeAll = 0;
+	qtdIteracao = 0;
 	document.getElementById("time").innerHTML = '';
 
 	mostraTabuleiro();
@@ -125,38 +126,28 @@ document.getElementById("reiniciaBTN").addEventListener("click", function() {
 	document.getElementById("jogaBTN").disabled = false;	
 	document.getElementById("outraJogadaBTN").disabled = true;
 });
+/* Fim das funções de botões. */
 
 
+/* Função principal que roda o verifica jogada e também decide se joga ou volta. */
 function calcula(){
+	qtdIteracao++; 
+	if(mostraConsole){
+		console.log(qtdIteracao);
+	}
 	jogadas = [];
-	//console.log("tabCorrente: "+ tabCorrente);	
 
 	verificaJogadas();
-	//console.log("jogadas:");
-	//console.log(jogadas);
 
 	if(posJogadas[tabCorrente] == null){
 		posJogadas[tabCorrente] = 0;
-		//console.log("ADD posJog: "+posJogadas[tabCorrente]);
 	}
 	
 	if(totalJogadas[tabCorrente] == null){
 		totalJogadas[tabCorrente] = ['A'];
-		//console.log("ADD totJog: "+totalJogadas[tabCorrente]);
 	}
-
-	//console.log("totalJogadas:");
-	//console.log(totalJogadas);
-	//console.log("totalJogadas.length: "+totalJogadas.length);
-	//console.log("posJogadas: "+posJogadas);
-	//console.log("posJogadas.length: "+posJogadas.length);
-
-	//console.log("jogadas.length: "+jogadas.length);
-	//console.log("posJogadas[tabCorrente]: "+posJogadas[tabCorrente]);
-	//console.log("totalJogadas[tabCorrente].length: "+totalJogadas[tabCorrente].length);
 		
 	if(jogadas.length > 0 && totalJogadas[tabCorrente].length > posJogadas[tabCorrente]){
-		//console.log("JOGAAAAA");
 
 		totalJogadas[tabCorrente] = jogadas;
 		
@@ -169,61 +160,34 @@ function calcula(){
 		
 		joga(jogada);
 
-		//console.log("pos:");
-		//console.log(pos);
 		tabCorrente++;
 	}else{
-		//console.log("nao");
 		volta();
 	}
-
-	//console.log("\n\n\n");
-	//debug++;
 }
 
-
+/* Função que prepara para voltar uma jogada */
 function volta(){
-	//console.log("******************* SEM JOGADAS **********************");
-
 	posJogadas.pop();
 	totalJogadas.pop();
 
 	tabCorrente--;
 
-	//console.log(tabCorrente);
-
-	//console.log("totalJogadas.length: "+totalJogadas.length);
-	//console.log("posJogadas: "+posJogadas);
-	//console.log("posJogadas.length: "+posJogadas.length);
-
 	pos = posJogadas[tabCorrente];
-	//console.log("pos: "+pos);
-	//console.log("tabCorrente: "+tabCorrente);
-
 	jogada = totalJogadas[tabCorrente][pos];
 	desfazJogada(jogada);
 
 	posJogadas[tabCorrente]++;
-
-	//posJogadas.pop();
-	//totalJogadas.pop();
-	
-	//console.log("posJogadas: "+posJogadas);
-	//console.log("posJogadas.length: "+posJogadas.length);
-
-	//console.log(tabCorrente);
-	//console.log("FIM");
 }
 
+/* Função que compara o tabuleiro atual com o tabuleiro final. Retorna true e false. */
 function compara(){
 	var igual = false;
 	for(i=0; i<=6; i++){
         	for(j=0; j<=6; j++) {
 			if(tabuleiro_final[i][j]===tabuleiro[i][j]){
-				// console.log("igual");
 				igual = true;
 			}else {
-				// console.log("não igual");
 				return false;
 			}
 		}
@@ -231,21 +195,19 @@ function compara(){
 	return igual;
 }
 
+/* Função que compara o tabuleiro atual com o tabuleiro final. Retorna a quantidade de tabuleiros iguais encontrados. */
 function compara2(){
 	var igual = false;
 	for(i=0; i<=6; i++){
         	for(j=0; j<=6; j++) {
 			if(tabuleiro_final[i][j]===tabuleiro[i][j]){
-				// console.log("igual");
 				igual = true;
 			}else {
-				// console.log("não igual");
 				return false;
 			}
 		}
 	}
 	qtdEncontradosIgual++;
-	//console.log("qtdIgual: "+qtdEncontradosIgual);
 	return qtdEncontradosIgual;
 }
 	
@@ -264,7 +226,7 @@ function verificaJogadas(){
 	}
 }
 
-/* Testa as 2 proximas posições seguintes de uma peça em todas as direções (Cima, baixo, esquerda e direita). Procura por peça na seguinte e vazio na posterior. */
+/* Testa as 2 proximas posições seguintes de uma peça em todas as direções (Cima, baixo, esquerda e direita). Procura por peça na casa seguinte e vazio na posterior. */
 function testaVizinho(i,j){
 	// Direita
 	if((j+1)<=6 && (j+2)<=6 ) {
@@ -302,16 +264,17 @@ function addJogada(p1i, p1j, p2i, p2j, p3i, p3j){
 	jogAux.push(p3i);
 	jogAux.push(p3j);
 
-	// console.log("Jogada: "+p1i+"."+p1j+", "+p2i+"."+p2j+", "+p3i+"."+p3j);
-
 	jogadas.push(jogAux);
 }
 	
 /* Faz uma jogada. p1 é quem "come", p2 é o "comido", e p3 é o destino de p1. */
 function joga(jogada){
-	//console.log("joga: ");
-	//console.log(jogada);
-	// console.log("\n");
+	if(mostraConsole){
+		console.log("joga: ");
+		console.log(jogada);
+		console.log("\n");
+	}
+
 	p1i = jogada[0];
 	p1j = jogada[1];
 	p2i = jogada[2];
@@ -323,10 +286,14 @@ function joga(jogada){
 	tabuleiro[p2i][p2j] = 0;
 	tabuleiro[p3i][p3j] = 1;
 }
-	
+
+/* Desfaz uma jogada. Faz o contrário do joga. */
 function desfazJogada(jogada){
-	//console.log("desfaz jogada: ");
-	//console.log(jogada);
+	if(mostraConsole){
+		console.log("## Desfaz: ");
+		console.log(jogada);
+		console.log("\n");
+	}
 
 	p1i = jogada[0];
 	p1j = jogada[1];
@@ -339,7 +306,8 @@ function desfazJogada(jogada){
 	tabuleiro[p2i][p2j] = 1;
 	tabuleiro[p3i][p3j] = 0;
 }
-		
+
+/* Verifica as jogadas feitas e prepara elas em uma string para serem mostradas na tela. */
 function jogadasFeitas(){
 	var qtdJogadasFeitas = 0;
 	var stringJogadas = '';
@@ -355,6 +323,7 @@ function jogadasFeitas(){
 	return stringTitle+stringJogadas;
 }
 
+/* Mostra as jogadas verificadas na função jogadasFeitas na tela. */
 function mostraJogadasFeitasNaTela(){
 	var listaResult = document.getElementsByClassName('listaResultado')[0];		
 	var resultado = jogadasFeitas();
@@ -365,7 +334,7 @@ function mostraJogadasFeitasNaTela(){
 	result.classList.add("-show");
 }
 
-
+/* Limpa as jogadas da tela. */
 function limpaJogadasFeitasNaTela(someTudo){
 	var listaResult = document.getElementsByClassName('listaResultado')[0];
 	listaResult.innerHTML = '';
@@ -379,8 +348,7 @@ function limpaJogadasFeitasNaTela(someTudo){
 
 }
 
-
-
+/* Função que mostra/atualiza o tabuleiro. */
 function mostraTabuleiro(){
 	var count = 0;
 	for(i=0; i<=6; i++){
@@ -397,7 +365,7 @@ function mostraTabuleiro(){
 	}
 }
 
-
+/* função que mostra o tempo que durou o cálculo do resultado. */
 function mostraTempo(){
 	timeAll = timeEnd - timeInit;
 	document.getElementById("time").innerHTML =  "Duração: " + timeAll + " ms";
