@@ -1,4 +1,4 @@
-# [Resta Um](https://dudukling.github.io/resta-um/)
+# [resta-um](https://dudukling.github.io/resta-um/)
 
 Jogo 'Resta Um' implementado utilizando backtracking.
 
